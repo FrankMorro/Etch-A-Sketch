@@ -1,6 +1,9 @@
 html {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+
+  min-height: 100%;
+  position: relative;
 }
 
 *,
@@ -9,4 +12,63 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: inherit;
+}
+
+html,
+body {
+  background-color: #f4eee0;
+  color: #393646;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+/* section Game */
+.game-container {
+  display: flex;
+  gap: 20px;
+  margin: 10px;
+}
+
+.control {
+  background-color: azure;
+}
+
+.canvas {
+  background-color: darkgoldenrod;
+  width: 400px;
+  height: 400px;
+}
+
+/* Section Footer */
+
+footer {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  height: 100px;
+  background-color: #393646;
+  color: #f4eee0;
+
+  font-size: 24px;
+
+  /* position: absolute;
+  width: 100%;
+  bottom: 0; */
 }
