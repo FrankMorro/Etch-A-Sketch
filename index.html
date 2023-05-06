@@ -14,18 +14,36 @@
   </head>
   <body>
     <header>
-      <h1>Etch-A-Sketch</h1>
+      <div class="header-container">
+        <h1>Etch-A-Sketch</h1>
+        <p>Here place the body</p>
+        <form class="formAction" action="">
+          <button type="button" class="btn" id="btnAdd">Restablecer</button>
+          <label for="countPixel">Cantidad Pixel</label>
+          <input
+            title="count pixel"
+            type="number"
+            name="pixel"
+            id="countPixel"
+            maxlength="2"
+            max="100"
+            min="1"
+            value="64"
+          />
+          <input type="checkbox" name="viewBorder" id="border" />
+          <label for="border">Activar Borde</label>
+        </form>
+      </div>
     </header>
 
     <main>
       <div class="main-conatiner">
-        <p>Here place the body</p>
         <div class="game-container">
           <div class="control">
-            <div>CONTROL</div>
+            <div>AQUÍ COLOCARÉ LOS CONTROLES</div>
           </div>
-          <div class="canvas">
-            <div>CANVAS</div>
+          <div id="lienzo" class="lienzo-container">
+            <!-- <div class="pixel"></div> -->
           </div>
         </div>
       </div>

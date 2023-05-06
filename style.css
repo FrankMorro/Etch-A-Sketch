@@ -1,9 +1,6 @@
 html {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-
-  min-height: 100%;
-  position: relative;
 }
 
 *,
@@ -11,18 +8,18 @@ html {
 *::after {
   padding: 0;
   margin: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
-html,
 body {
-  background-color: #f4eee0;
-  color: #393646;
-
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: #f4eee0;
+  color: #393646;
   justify-content: space-between;
-  height: 100vh;
+  flex-grow: 1;
+  margin: 0 auto;
 }
 
 header {
@@ -38,6 +35,18 @@ main {
   justify-content: center;
 }
 
+.formAction {
+  display: flex;
+  /* flex-direction: column; */
+  margin-top: 10px;
+  gap: 3px;
+}
+
+.btn {
+  width: 150px;
+  height: 30px;
+}
+
 /* section Game */
 .game-container {
   display: flex;
@@ -47,12 +56,23 @@ main {
 
 .control {
   background-color: azure;
+  width: 200px;
 }
 
-.canvas {
-  background-color: darkgoldenrod;
-  width: 400px;
-  height: 400px;
+.lienzo-container {
+  width: 640px;
+  height: 640px;
+  background-color: white;
+  display: flex;
+  flex-flow: column wrap;
+
+  /* border: 1px solid black; */
+  box-shadow: 10px 10px 5px grey;
+}
+
+.pixel {
+  background-color: white;
+  /* border: solid 0.2px rgb(233, 230, 230); */
 }
 
 /* Section Footer */
