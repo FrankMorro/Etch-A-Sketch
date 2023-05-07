@@ -35,6 +35,24 @@ main {
   justify-content: center;
 }
 
+.header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 620px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 150px;
+  height: 30px;
+}
+
 .formAction {
   display: flex;
   /* flex-direction: column; */
@@ -42,9 +60,15 @@ main {
   gap: 3px;
 }
 
-.btn {
-  width: 150px;
-  height: 30px;
+.input {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.control-container {
+  display: flex;
+  gap: 70px;
 }
 
 /* section Game */
@@ -65,14 +89,12 @@ main {
   background-color: white;
   display: flex;
   flex-flow: column wrap;
-
-  /* border: 1px solid black; */
   box-shadow: 10px 10px 5px grey;
 }
 
 .pixel {
   background-color: white;
-  /* border: solid 0.2px rgb(233, 230, 230); */
+  cursor: 'url("./img/borrador.png"), auto';
 }
 
 /* Section Footer */

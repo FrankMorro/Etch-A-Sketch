@@ -15,23 +15,62 @@
   <body>
     <header>
       <div class="header-container">
-        <h1>Etch-A-Sketch</h1>
-        <p>Here place the body</p>
+        <h1 class="title">Etch-A-Sketch</h1>
+        <p>
+          You can enter the amount of pixel you want to display on the canvas,
+          and press Enter to update it. Note that changing this parameter resets
+          the canvas. Allowable values are between 1 - 100. You can use the
+          double click to activate the continuous line in any area of the
+          canvas, and press click to deactivate it.
+        </p>
         <form class="formAction" action="">
-          <button type="button" class="btn" id="btnAdd">Restablecer</button>
-          <label for="countPixel">Cantidad Pixel</label>
-          <input
-            title="count pixel"
-            type="number"
-            name="pixel"
-            id="countPixel"
-            maxlength="2"
-            max="100"
-            min="1"
-            value="64"
-          />
-          <input type="checkbox" name="viewBorder" id="border" />
-          <label for="border">Activar Borde</label>
+          <div class="input">
+            <div>
+              <button type="button" class="btn" id="btnAdd">Restore</button>
+              <label for="countPixel">Pixel quantity</label>
+              <input
+                title="count pixel"
+                type="number"
+                name="pixel"
+                id="countPixel"
+                maxlength="2"
+                max="100"
+                min="1"
+                value="48"
+              />
+              <!-- <input type="color" name="clean" id="pickColor" />
+              <label for="pickColor">Color</label> -->
+            </div>
+            <div class="control-container">
+              <div>
+                <div>
+                  <input type="checkbox" name="viewBorder" id="border" />
+                  <label for="border">Activate borders</label>
+                </div>
+                <div>
+                  <input type="checkbox" name="pencilContinue" id="pencil" />
+                  <label for="pencil">Activate continuous line</label>
+                </div>
+
+                <div>
+                  <input type="checkbox" name="clean" id="draft" />
+                  <label for="draft">Activate borrador</label>
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <input
+                    type="color"
+                    name="clean"
+                    id="colorUser"
+                    value="#ff0000"
+                  />
+                  <label for="colorUser">Color</label>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </header>
@@ -39,12 +78,10 @@
     <main>
       <div class="main-conatiner">
         <div class="game-container">
-          <div class="control">
+          <!-- <div class="control">
             <div>AQUÍ COLOCARÉ LOS CONTROLES</div>
-          </div>
-          <div id="lienzo" class="lienzo-container">
-            <!-- <div class="pixel"></div> -->
-          </div>
+          </div> -->
+          <div id="lienzo" class="lienzo-container"></div>
         </div>
       </div>
     </main>

@@ -3,19 +3,61 @@ let inputPixel = document.getElementById('countPixel')
 let lienzo = document.getElementById('lienzo')
 let intPixel = Number(countPixel.value)
 let border = document.getElementById('border')
+let pencil = document.getElementById('pencil')
+let draft = document.getElementById('draft')
+
+let colorUser = document.querySelector('#colorUser')
+var colorPredeterminado = '#0000ff'
 
 let divPadre = document.getElementById('lienzo')
-let color = 'black'
+let color = '#0000ff'
+let myBorderColor = 'white'
 let isMouseDown = false
 
 const MAX_PIXEL = 100
 const MIN_PIXEL = 1
 
 border.onclick = alterBorder
+pencil.onclick = alterPencil
+draft.onclick = activeDraft
 
 btnAdd.onclick = addPixel
 
+function startup() {
+  colorUser = document.querySelector('#colorUser')
+  colorUser.value = colorPredeterminado
+  colorUser.addEventListener('input', actualizarPrimero, false)
+  // colorUser.addEventListener('change', actualizarTodo, false)
+  colorUser.select()
+}
+
+startup()
 addPixel()
+
+function actualizarPrimero(event) {
+  color = event.target.value
+  myBorderColor = color
+}
+
+function activeDraft() {
+  color = 'white'
+  myBorderColor = color
+  if (draft.checked === true) {
+    divPadre.style.cursor = 'url("./img/draft24.png"), auto'
+
+    if (border.checked === true) {
+      myBorderColor = 'rgb(233, 230, 230)'
+      color = 'white'
+    } else {
+      color = 'white'
+      myBorderColor = color
+    }
+  } else {
+    divPadre.style.cursor = 'default'
+    color = colorUser.value
+    myBorderColor = color
+  }
+}
 
 document
   .getElementById('countPixel')
@@ -28,16 +70,17 @@ document
   })
 
 function addPixel() {
-  limpiarDiv()
-
   intPixel = Number(inputPixel.value)
 
   if (intPixel < MIN_PIXEL || intPixel > MAX_PIXEL) {
     alert(
       'El número de pixeles debe estar entre ' + MIN_PIXEL + ' y ' + MAX_PIXEL
     )
+
     return
   }
+
+  limpiarDiv()
 
   let myCountPixel = intPixel
   let sizeLienzo = 640
@@ -66,6 +109,12 @@ function limpiarDiv() {
 }
 
 function alterBorder() {
+  myBorderColor = color
+
+  if (draft.checked === true) {
+    myBorderColor = 'rgb(233, 230, 230)'
+  }
+
   if (border.checked === true) {
     addBorder()
   } else {
@@ -73,13 +122,21 @@ function alterBorder() {
   }
 }
 
-function addBorder() {
-  var myDiv = document.getElementById('lienzo')
-  var div = myDiv.getElementsByTagName('div')
+function alterPencil() {
+  if (pencil.checked === true) {
+    isMouseDown = true
+  } else {
+    isMouseDown = false
+  }
+}
 
-  for (var i = 0; i < div.length; i++) {
+function addBorder() {
+  let lienzo = document.getElementById('lienzo')
+  let div = lienzo.getElementsByTagName('div')
+
+  for (let i = 0; i < div.length; i++) {
     if (div[i].style.backgroundColor !== 'white') {
-      div[i].style.border = `0.15px solid ${color}`
+      div[i].style.border = `0.15px solid ${div[i].style.backgroundColor}`
     } else {
       div[i].style.border = '0.15px solid rgb(233, 230, 230)'
     }
@@ -87,14 +144,12 @@ function addBorder() {
 }
 
 function removeBorder() {
-  var myDiv = document.getElementById('lienzo')
-  var div = myDiv.getElementsByTagName('div')
-  for (var i = 0; i < div.length; i++) {
+  let lienzo = document.getElementById('lienzo')
+  let div = lienzo.getElementsByTagName('div')
+  for (let i = 0; i < div.length; i++) {
     div[i].style.border = 'none'
   }
 }
-
-// Aquí controlo en efecto clic del mouse
 
 divPadre.addEventListener('mousedown', function () {
   isMouseDown = true
@@ -106,24 +161,32 @@ divPadre.addEventListener('mouseup', function () {
 
 divPadre.addEventListener('mousemove', function (event) {
   if (isMouseDown) {
-    var divHijos = divPadre.getElementsByTagName('div')
-    for (var i = 0; i < divHijos.length; i++) {
-      var divHijo = divHijos[i]
+    let divHijos = divPadre.getElementsByTagName('div')
+    for (let i = 0; i < divHijos.length; i++) {
+      let divHijo = divHijos[i]
+
       if (event.target == divHijo) {
         divHijo.style.backgroundColor = color
-        divHijo.style.border = color
+        divHijo.style.border = `0.15px solid ${myBorderColor}`
       }
     }
   }
 })
 
 divPadre.addEventListener('click', function (event) {
-  var divHijos = divPadre.getElementsByTagName('div')
-  for (var i = 0; i < divHijos.length; i++) {
-    var divHijo = divHijos[i]
+  pencil.checked = false
+
+  let divHijos = divPadre.getElementsByTagName('div')
+  for (let i = 0; i < divHijos.length; i++) {
+    let divHijo = divHijos[i]
     if (event.target == divHijo) {
       divHijo.style.backgroundColor = color
-      divHijo.style.border = color
+      divHijo.style.border = `0.15px solid ${myBorderColor}`
     }
   }
+})
+
+divPadre.addEventListener('dblclick', () => {
+  pencil.checked = true
+  alterPencil()
 })
