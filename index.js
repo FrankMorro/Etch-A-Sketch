@@ -38,14 +38,18 @@ function startup() {
 }
 
 function alternateRandomColor() {
-  if (randomColor.checked === true) {
-    color = getRandomColor()
-    myBorderColor = color
-    colorUser.disabled = true
+  if (draft.checked === true) {
+    activeColorBorder()
   } else {
-    color = colorUser.value
-    myBorderColor = color
-    colorUser.disabled = false
+    if (randomColor.checked === true) {
+      color = getRandomColor()
+      myBorderColor = color
+      colorUser.disabled = true
+    } else {
+      color = colorUser.value
+      myBorderColor = color
+      colorUser.disabled = false
+    }
   }
 }
 
@@ -58,24 +62,25 @@ function getRandomColor() {
   return color
 }
 
+function activeColorBorder() {
+  if (border.checked === true) {
+    color = 'white'
+    myBorderColor = 'rgb(233, 230, 230)'
+  } else {
+    color = 'white'
+    myBorderColor = color
+  }
+}
+
 function actualizarPrimero(event) {
   color = event.target.value
   myBorderColor = color
 }
 
 function activeDraft() {
-  color = 'white'
-  myBorderColor = color
   if (draft.checked === true) {
     divPadre.style.cursor = 'url("./img/draft24.png"), auto'
-
-    if (border.checked === true) {
-      myBorderColor = 'rgb(233, 230, 230)'
-      color = 'white'
-    } else {
-      color = 'white'
-      myBorderColor = color
-    }
+    activeColorBorder()
   } else {
     divPadre.style.cursor = 'default'
     color = colorUser.value
