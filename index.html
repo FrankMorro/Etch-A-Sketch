@@ -23,11 +23,13 @@
           double click to activate the continuous line in any area of the
           canvas, and press click to deactivate it.
         </p>
+
         <form class="formAction" action="">
           <div class="input">
             <div>
               <button type="button" class="btn" id="btnAdd">Restore</button>
-              <label for="countPixel">Pixel quantity</label>
+              <!-- <input type="color" name="clean" id="pickColor" />
+              <label for="pickColor">Color</label> -->
               <input
                 title="count pixel"
                 type="number"
@@ -38,11 +40,10 @@
                 min="1"
                 value="48"
               />
-              <!-- <input type="color" name="clean" id="pickColor" />
-              <label for="pickColor">Color</label> -->
+              <label for="countPixel">Pixel quantity</label>
             </div>
             <div class="control-container">
-              <div>
+              <div class="control-section">
                 <div>
                   <input type="checkbox" name="viewBorder" id="border" />
                   <label for="border">Activate borders</label>
@@ -58,14 +59,13 @@
                 </div>
               </div>
 
-              <div>
+              <div class="control-section">
                 <div>
-                  <input
-                    type="color"
-                    name="clean"
-                    id="colorUser"
-                    value="#ff0000"
-                  />
+                  <input type="checkbox" name="clean" id="randomColor" />
+                  <label for="randomColor">Activate random color</label>
+                </div>
+                <div>
+                  <input type="color" name="clean" id="colorUser" />
                   <label for="colorUser">Color</label>
                 </div>
               </div>

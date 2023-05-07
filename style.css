@@ -71,6 +71,12 @@ main {
   gap: 70px;
 }
 
+.control-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 /* section Game */
 .game-container {
   display: flex;
@@ -78,10 +84,10 @@ main {
   margin: 10px;
 }
 
-.control {
+/* .control {
   background-color: azure;
   width: 200px;
-}
+} */
 
 .lienzo-container {
   width: 640px;

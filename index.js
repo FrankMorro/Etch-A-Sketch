@@ -7,21 +7,27 @@ let pencil = document.getElementById('pencil')
 let draft = document.getElementById('draft')
 
 let colorUser = document.querySelector('#colorUser')
-var colorPredeterminado = '#0000ff'
+let colorPredeterminado = '#000000'
+
+let randomColor = document.getElementById('randomColor')
 
 let divPadre = document.getElementById('lienzo')
-let color = '#0000ff'
+let color = colorPredeterminado
 let myBorderColor = 'white'
 let isMouseDown = false
 
 const MAX_PIXEL = 100
 const MIN_PIXEL = 1
 
-border.onclick = alterBorder
-pencil.onclick = alterPencil
+border.onclick = alternateBorder
+pencil.onclick = alternatePencil
 draft.onclick = activeDraft
+randomColor.onclick = alternateRandomColor
 
 btnAdd.onclick = addPixel
+
+startup()
+addPixel()
 
 function startup() {
   colorUser = document.querySelector('#colorUser')
@@ -31,8 +37,26 @@ function startup() {
   colorUser.select()
 }
 
-startup()
-addPixel()
+function alternateRandomColor() {
+  if (randomColor.checked === true) {
+    color = getRandomColor()
+    myBorderColor = color
+    colorUser.disabled = true
+  } else {
+    color = colorUser.value
+    myBorderColor = color
+    colorUser.disabled = false
+  }
+}
+
+function getRandomColor() {
+  let letters = '0123456789ABCDEF'
+  let color = '#'
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}
 
 function actualizarPrimero(event) {
   color = event.target.value
@@ -58,16 +82,6 @@ function activeDraft() {
     myBorderColor = color
   }
 }
-
-document
-  .getElementById('countPixel')
-  .addEventListener('keypress', function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault()
-      // Esto se ejecutará al presionar Enter
-      addPixel()
-    }
-  })
 
 function addPixel() {
   intPixel = Number(inputPixel.value)
@@ -97,7 +111,7 @@ function addPixel() {
     lienzo.appendChild(pixel)
   }
 
-  alterBorder()
+  alternateBorder()
 }
 
 function limpiarDiv() {
@@ -108,7 +122,7 @@ function limpiarDiv() {
   }
 }
 
-function alterBorder() {
+function alternateBorder() {
   myBorderColor = color
 
   if (draft.checked === true) {
@@ -122,7 +136,7 @@ function alterBorder() {
   }
 }
 
-function alterPencil() {
+function alternatePencil() {
   if (pencil.checked === true) {
     isMouseDown = true
   } else {
@@ -151,6 +165,16 @@ function removeBorder() {
   }
 }
 
+document
+  .getElementById('countPixel')
+  .addEventListener('keypress', function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault()
+      // Esto se ejecutará al presionar Enter
+      addPixel()
+    }
+  })
+
 divPadre.addEventListener('mousedown', function () {
   isMouseDown = true
 })
@@ -160,6 +184,7 @@ divPadre.addEventListener('mouseup', function () {
 })
 
 divPadre.addEventListener('mousemove', function (event) {
+  alternateRandomColor()
   if (isMouseDown) {
     let divHijos = divPadre.getElementsByTagName('div')
     for (let i = 0; i < divHijos.length; i++) {
@@ -175,6 +200,7 @@ divPadre.addEventListener('mousemove', function (event) {
 
 divPadre.addEventListener('click', function (event) {
   pencil.checked = false
+  alternateRandomColor()
 
   let divHijos = divPadre.getElementsByTagName('div')
   for (let i = 0; i < divHijos.length; i++) {
@@ -188,5 +214,5 @@ divPadre.addEventListener('click', function (event) {
 
 divPadre.addEventListener('dblclick', () => {
   pencil.checked = true
-  alterPencil()
+  alternatePencil()
 })
