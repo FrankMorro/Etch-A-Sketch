@@ -93,7 +93,7 @@ function addPixel() {
 
   if (intPixel < MIN_PIXEL || intPixel > MAX_PIXEL) {
     alert(
-      'El número de pixeles debe estar entre ' + MIN_PIXEL + ' y ' + MAX_PIXEL
+      'The number of pixels must be between ' + MIN_PIXEL + ' and ' + MAX_PIXEL
     )
 
     return
