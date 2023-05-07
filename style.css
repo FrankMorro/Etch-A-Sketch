@@ -39,10 +39,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 620px;
+  width: 680px;
 }
 
-.title {
+.title,
+.control-title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +56,6 @@ main {
 
 .formAction {
   display: flex;
-  /* flex-direction: column; */
   margin-top: 10px;
   gap: 3px;
 }
@@ -84,23 +84,42 @@ main {
   margin: 10px;
 }
 
-/* .control {
+.control {
   background-color: azure;
-  width: 200px;
-} */
+  width: 300px;
+  padding: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.control-title {
+  color: rgb(60, 60, 229);
+  font-size: 22px;
+}
+
+.control-input {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
 
 .lienzo-container {
-  width: 640px;
-  height: 640px;
+  width: 520px;
+  height: 520px;
   background-color: white;
   display: flex;
   flex-flow: column wrap;
-  box-shadow: 10px 10px 5px grey;
+  /* box-shadow: 10px 10px 5px grey; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .pixel {
   background-color: white;
   cursor: 'url("./img/borrador.png"), auto';
+}
+
+.restore {
+  background-color: white;
 }
 
 /* Section Footer */
@@ -111,9 +130,9 @@ footer {
   align-content: center;
   justify-content: center;
 
-  height: 100px;
+  height: 80px;
   background-color: #393646;
   color: #f4eee0;
 
-  font-size: 24px;
+  font-size: 20px;
 }

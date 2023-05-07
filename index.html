@@ -13,83 +13,89 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="header-container">
-        <h1 class="title">Etch-A-Sketch</h1>
-        <p>
-          You can enter the amount of pixel you want to display on the canvas,
-          and press Enter to update it. Note that changing this parameter resets
-          the canvas. Allowable values are between 1 - 100. You can use the
-          double click to activate the continuous line in any area of the
-          canvas, and press click to deactivate it.
-        </p>
-
-        <form class="formAction" action="">
-          <div class="input">
-            <div>
-              <button type="button" class="btn" id="btnAdd">Restore</button>
-              <!-- <input type="color" name="clean" id="pickColor" />
-              <label for="pickColor">Color</label> -->
-              <input
-                title="count pixel"
-                type="number"
-                name="pixel"
-                id="countPixel"
-                maxlength="2"
-                max="100"
-                min="1"
-                value="48"
-              />
-              <label for="countPixel">Pixel quantity</label>
-            </div>
-            <div class="control-container">
-              <div class="control-section">
-                <div>
-                  <input type="checkbox" name="viewBorder" id="border" />
-                  <label for="border">Activate borders</label>
-                </div>
-                <div>
-                  <input type="checkbox" name="pencilContinue" id="pencil" />
-                  <label for="pencil">Activate continuous line</label>
-                </div>
-
-                <div>
-                  <input type="checkbox" name="clean" id="draft" />
-                  <label for="draft">Activate draft</label>
-                </div>
-              </div>
-
-              <div class="control-section">
-                <div>
-                  <input type="checkbox" name="clean" id="randomColor" />
-                  <label for="randomColor">Activate random color</label>
-                </div>
-                <div>
-                  <input type="color" name="clean" id="colorUser" />
-                  <label for="colorUser">Color</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </header>
-
-    <main>
-      <div class="main-conatiner">
-        <div class="game-container">
-          <!-- <div class="control">
-            <div>AQUÍ COLOCARÉ LOS CONTROLES</div>
-          </div> -->
-          <div id="lienzo" class="lienzo-container"></div>
+    <div>
+      <header>
+        <div class="header-container">
+          <h1 class="title">Etch-A-Sketch</h1>
+          <p>
+            You can enter the amount of pixel you want to display on the canvas,
+            and press Enter to update it. Note that changing this parameter
+            resets the canvas. Allowable values are between 1 - 100. You can use
+            the double click to activate the continuous line in any area of the
+            canvas, and press click to deactivate it.
+          </p>
         </div>
-      </div>
-    </main>
+      </header>
+
+      <main>
+        <div class="main-conatiner">
+          <div class="game-container">
+            <div class="control">
+              <div class="control-input">
+                <p class="control-title">Controles</p>
+                <button type="button" class="btn" id="btnRestore">
+                  Restore
+                </button>
+                <div>
+                  <input
+                    title="count pixel"
+                    type="number"
+                    name="pixel"
+                    id="countPixel"
+                    maxlength="2"
+                    max="100"
+                    min="1"
+                    value="48"
+                  />
+                  <label for="countPixel">Pixel quantity</label>
+                </div>
+              </div>
+              <form class="formAction" action="">
+                <div class="input">
+                  <div class="control-container">
+                    <div class="control-section">
+                      <div>
+                        <input type="checkbox" name="viewBorder" id="border" />
+                        <label for="border">Activate borders</label>
+                      </div>
+                      <div>
+                        <input
+                          type="checkbox"
+                          name="pencilContinue"
+                          id="pencil"
+                        />
+                        <label for="pencil">Activate continuous line</label>
+                      </div>
+
+                      <div>
+                        <input type="checkbox" name="clean" id="draft" />
+                        <label for="draft">Activate draft</label>
+                      </div>
+
+                      <div>
+                        <input type="checkbox" name="clean" id="randomColor" />
+                        <label for="randomColor">Activate random color</label>
+                      </div>
+                      <div>
+                        <input type="color" name="clean" id="colorUser" />
+                        <label for="colorUser">Color</label>
+                      </div>
+                    </div>
+
+                    <div class="control-section"></div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div id="lienzo" class="lienzo-container"></div>
+          </div>
+        </div>
+      </main>
+    </div>
 
     <footer>
-      <p>Copyright &copy The World of Digital 2023</p>
+      <p>Copyright &copy The World of Digital FrankMorro 2023</p>
     </footer>
-
     <script src="index.js"></script>
   </body>
 </html>

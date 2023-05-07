@@ -1,4 +1,4 @@
-let btnAdd = document.getElementById('btnAdd')
+let btnRestore = document.getElementById('btnRestore')
 let inputPixel = document.getElementById('countPixel')
 let lienzo = document.getElementById('lienzo')
 let intPixel = Number(countPixel.value)
@@ -24,7 +24,7 @@ pencil.onclick = alternatePencil
 draft.onclick = activeDraft
 randomColor.onclick = alternateRandomColor
 
-btnAdd.onclick = addPixel
+btnRestore.onclick = restoreLienzo
 
 startup()
 addPixel()
@@ -35,6 +35,18 @@ function startup() {
   colorUser.addEventListener('input', actualizarPrimero, false)
   // colorUser.addEventListener('change', actualizarTodo, false)
   colorUser.select()
+}
+
+function restoreLienzo() {
+  let divHijos = divPadre.getElementsByTagName('div')
+
+  activeColorBorder()
+
+  for (let i = 0; i < divHijos.length; i++) {
+    let divHijo = divHijos[i]
+    divHijo.style.backgroundColor = color
+    divHijo.style.border = `0.15px solid ${myBorderColor}`
+  }
 }
 
 function alternateRandomColor() {
@@ -54,12 +66,18 @@ function alternateRandomColor() {
 }
 
 function getRandomColor() {
-  let letters = '0123456789ABCDEF'
-  let color = '#'
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)]
-  }
-  return color
+  var r = Math.floor(Math.random() * 256)
+  var g = Math.floor(Math.random() * 256)
+  var b = Math.floor(Math.random() * 256)
+  return 'rgb(' + r + ', ' + g + ', ' + b + ')'
+}
+
+function addTenPercentToColor(color) {
+  var r = Math.floor(color.r * 1.1)
+  var g = Math.floor(color.g * 1.1)
+  var b = Math.floor(color.b * 1.1)
+
+  return 'rgb(' + r + ', ' + g + ', ' + b + ')'
 }
 
 function activeColorBorder() {
@@ -102,7 +120,7 @@ function addPixel() {
   limpiarDiv()
 
   let myCountPixel = intPixel
-  let sizeLienzo = 640
+  let sizeLienzo = 520
   let sizePixel = sizeLienzo / myCountPixel
   let countPixel = myCountPixel ** 2
 
@@ -122,6 +140,7 @@ function addPixel() {
 function limpiarDiv() {
   if (lienzo != null) {
     while (lienzo.firstChild) {
+      //lienzo.className('restore')
       lienzo.removeChild(lienzo.firstChild)
     }
   }
@@ -208,6 +227,7 @@ divPadre.addEventListener('click', function (event) {
   alternateRandomColor()
 
   let divHijos = divPadre.getElementsByTagName('div')
+
   for (let i = 0; i < divHijos.length; i++) {
     let divHijo = divHijos[i]
     if (event.target == divHijo) {
