@@ -59,20 +59,41 @@ main {
 
 .btn {
   width: 100%;
-  height: 30px;
+  height: 40px;
   font-size: 16px;
+  font-weight: 600;
+}
+
+#btnRestore {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px #888888;
+}
+
+#btnRestore:hover {
+  background-color: #d32f2f;
+  cursor: pointer;
+}
+
+#btnRestore:active {
+  box-shadow: inset 0px 0px 10px #888888;
 }
 
 .formAction {
   display: flex;
   margin-top: 10px;
   gap: 3px;
+  font-size: 18px;
 }
 
 .input {
   display: flex;
   gap: 5px;
   flex-direction: column;
+  font-size: 18px;
 }
 
 .control-container {
@@ -102,19 +123,29 @@ main {
 }
 
 .control-title {
-  color: rgb(60, 60, 229);
+  color: #83764f;
   font-size: 22px;
+  font-weight: 700;
 }
 
 .control-input {
   display: flex;
   gap: 5px;
   flex-direction: column;
+  font-size: 18px;
+}
+
+.countPixel {
+  font-size: 24px;
+}
+
+input[type='number'] {
+  font-size: 20px;
 }
 
 .lienzo-container {
-  width: 520px;
-  height: 520px;
+  width: 580px;
+  height: 580px;
   background-color: white;
   display: flex;
   flex-flow: column wrap;

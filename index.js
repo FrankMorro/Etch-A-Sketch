@@ -15,6 +15,7 @@ let divPadre = document.getElementById('lienzo')
 let color = colorPredeterminado
 let myBorderColor = 'white'
 let isMouseDown = false
+let sizeLienzo = 580
 
 const MAX_PIXEL = 100
 const MIN_PIXEL = 1
@@ -40,6 +41,8 @@ function startup() {
 function restoreLienzo() {
   let divHijos = divPadre.getElementsByTagName('div')
 
+  color = colorPredeterminado
+  colorUser.value = colorPredeterminado
   activeColorBorder()
 
   for (let i = 0; i < divHijos.length; i++) {
@@ -120,7 +123,7 @@ function addPixel() {
   limpiarDiv()
 
   let myCountPixel = intPixel
-  let sizeLienzo = 520
+
   let sizePixel = sizeLienzo / myCountPixel
   let countPixel = myCountPixel ** 2
 
